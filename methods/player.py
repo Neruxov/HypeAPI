@@ -2,6 +2,7 @@ import requests
 import math
 
 from .games.skywars import *
+from .games.bedwars import *
 
 class Player:
     def __init__(self, data):
@@ -34,6 +35,8 @@ class Player:
         self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
 
         self.skywars = SkyWars(self)
+
+        self.bedwars = BedWars(self)
 
     def refresh(self, apikey):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={apikey}").json()
@@ -228,6 +231,9 @@ class Player:
         if 'mostRecentMonthlyPackageRank' in self.data:
             return self.data['mostRecentMonthlyPackageRank']
         return None
+
+    def getBedWars(self):
+        return self.bedwars
 
     def getSkyWars(self):
         return self.skywars
