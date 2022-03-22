@@ -16,8 +16,12 @@ class API:
         '''
         if name:
             data = requests.get(f"https://api.hypixel.net/player?name={name}&key={self.apikey}").json()
+            if data['success'] == False:
+                raise APIException(data['cause'])
+            elif not 'player' in data or data['player'] == None:
+                raise APIException("Non-existing player")
         elif uuid:
             data = requests.get(f"https://api.hypixel.net/player?uuid={uuid}&key={self.apikey}").json()
         else:
-            raise NoArguments
+            raise NoArgumentsException
         return Player(data)

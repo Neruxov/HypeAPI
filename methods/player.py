@@ -3,10 +3,10 @@ import math
 
 class Player:
     def __init__(self, data):
-        self.name = data['playername']
-        self.uuid = data['uuid']
-        self.fulldata = data
         self.data = data['player']
+        self.name = self.data['playername']
+        self.uuid = self.data['uuid']
+        self.fulldata = data
 
         self.id = self.getID()
         self.displayname = self.getDisplayName()
@@ -142,13 +142,15 @@ class Player:
         return self.data['networkExp']
 
     def getNetworkLevel(self):
-        return 1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.networkExp())
+        return (1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp()))
 
     def getKarma(self):
         return self.data['karma']
 
     def getMcVersion(self):
-        return self.data['mcVersionRp']
+        if 'mcVersionRp' in self.data:
+            return self.data['mcVersionRp']
+        return None
 
     def getHypixelForums(self):
         if 'socialMedia' in self.data:
@@ -158,28 +160,28 @@ class Player:
         return None
 
     def getInstagram(self):
-        if 'socialMedia' in self.data['player']:
+        if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
                 if 'INSTAGRAM' in self.data['socialMedia']['links']:
                     return self.data['socialMedia']['links']['INSTAGRAM']
         return None
 
     def getDiscord(self):
-        if 'socialMedia' in self.data['player']:
+        if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
                 if 'DISCORD' in self.data['socialMedia']['links']:
                     return self.data['socialMedia']['links']['DISCORD']
         return None
 
     def getTwitter(self):
-        if 'socialMedia' in self.data['player']:
+        if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
                 if 'TWITTER' in self.data['socialMedia']['links']:
                     return self.data['socialMedia']['links']['TWITTER']
         return None
 
     def getYoutube(self):
-        if 'socialMedia' in self.data['player']:
+        if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
                 if 'YOUTUBE' in self.data['socialMedia']['links']:
                     return self.data['socialMedia']['links']['YOUTUBE']
