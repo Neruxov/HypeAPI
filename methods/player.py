@@ -1,6 +1,8 @@
 import requests
 import math
 
+from .games.skywars import *
+
 class Player:
     def __init__(self, data):
         self.data = data['player']
@@ -30,6 +32,8 @@ class Player:
         self.monthlyPlusColor = self.getMonthlyRankColor()
         self.monthlyPackageRank = self.getMonthlyPackageRank()
         self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
+
+        self.skywars = SkyWars(self)
 
     def refresh(self, apikey):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={apikey}").json()
@@ -224,3 +228,6 @@ class Player:
         if 'mostRecentMonthlyPackageRank' in self.data:
             return self.data['mostRecentMonthlyPackageRank']
         return None
+
+    def getSkyWars(self):
+        return self.skywars
