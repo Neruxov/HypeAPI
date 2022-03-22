@@ -104,7 +104,9 @@ class Player:
         Returns player's last login time
         :return: last login time [integer, unix ms]
         '''
-        return self.data['lastLogin']
+        if 'lastLogin' in self.data:
+            return self.data['lastLogin']
+        return None
 
     def getPlayerName(self):
         '''
@@ -133,7 +135,9 @@ class Player:
         Returns player's last logout time
         :return: last logout time [integer, unix ms]
         '''
-        return self.data['lastLogout']
+        if 'lastLogout' in self.data:
+            return self.data['lastLogout']
+        return None
 
     def getUserLanguage(self):
         return self.data['userLanguage']
@@ -203,7 +207,7 @@ class Player:
 
     def getRankColor(self):
         if 'rankPlusColor' in self.data:
-            return self.data['player']
+            return self.data['rankPlusColor']
         return None
 
     def getMonthlyRankColor(self):
