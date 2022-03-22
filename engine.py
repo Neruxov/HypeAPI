@@ -1,5 +1,6 @@
 import requests
 
+from errorhandler import *
 from methods.player import *
 
 class API:
@@ -18,5 +19,5 @@ class API:
         elif uuid:
             data = requests.get(f"https://api.hypixel.net/player?uuid={uuid}&key={self.apikey}").json()
         else:
-            return
+            raise NoArguments
         return Player(data)
