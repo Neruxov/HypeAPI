@@ -34,6 +34,29 @@ class Player:
     def refresh(self, apikey):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={apikey}").json()
 
+        self.id = self.getID()
+        self.displayname = self.getDisplayName()
+        self.firstLogin = self.getFirstLogin()
+        self.knownAliases = self.getKnownAliases()
+        self.knownAliasesLower = self.getKnownAliasesLower()
+        self.lastLogin = self.getLastLogin()
+        self.playerName = self.getPlayerName()
+        self.achievementsOneTime = self.getAchievementsOneTime()
+        self.userLanguage = self.getUserLanguage()
+        self.networkExp = self.getNetworkExp()
+        self.networkLevel = self.getNetworkLevel()
+        self.karma = self.getKarma()
+        self.mcVersion = self.getMcVersion()
+        self.hypixelForums = self.getHypixelForums()
+        self.discord = self.getDiscord()
+        self.twitter = self.getTwitter()
+        self.youtube = self.getYoutube()
+        self.rank = self.getRank()
+        self.rankColor = self.getRankColor()
+        self.monthlyPlusColor = self.getMonthlyRankColor()
+        self.monthlyPackageRank = self.getMonthlyPackageRank()
+        self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
+
     def getID(self):
         '''
         No wonder what this means .-. (probably hypixel player id)
