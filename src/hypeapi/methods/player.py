@@ -64,6 +64,9 @@ class Player:
         self.monthlyPackageRank = self.getMonthlyPackageRank()
         self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
 
+    def getGuild(self):
+        return self.api.guild(player=self.uuid)
+
     def getID(self):
         '''
         No wonder what this means .-. (probably hypixel player id)
