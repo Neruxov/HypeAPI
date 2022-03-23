@@ -1,1 +1,1 @@
-Hi :) idi nahui chto smotrish gay  
+Hi :)
