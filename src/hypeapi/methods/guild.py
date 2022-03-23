@@ -6,7 +6,51 @@ class Guild:
         self.fulldata = data
         self.data =  self.fulldata['guild']
 
-        
+        self.id = self.getID()
+        self.name = self.getName()
+        self.nameLower = self.getNameLower()
+        self.coins = self.getCoins()
+        self.coinsEveer = self.getCoinsEver()
+        self.timeCreated = self.getTimeCreated()
+        self.exp = self.getEXP()
+        self.public = self.isPublic()
+        self.tag = self.getTag()
+        self.tagColor = self.getTagColor()
+        self.description = self.getDescription()
+
+        self.members = self.getMembers()
+        self.ranks = self.getRanks()
+
+        self.experienceKingsQuest = self.getExperienceKingsQuest()
+        self.winnersQuest = self.getWinnersQuest()
+        self.onlinePlayersQuest = self.getOnlinePlayersQuest()
+
+        self.quakecraftEXP = self.getQuakecraftEXP()
+        self.survivalGamesEXP = self.getSurvivalGamesEXP()
+        self.buildBattleEXP = self.getBuildBattleEXP()
+        self.SMPEXP = self.getSMPEXP()
+        self.gingerbreadEXP = self.getGingerbreadEXP()
+        self.arcadeEXP = self.getArcadeEXP()
+        self.arenaEXP = self.getArenaEXP()
+        self.skyblockEXP = self.getSkyblockEXP()
+        self.legacyEXP = self.getLegacyEXP()
+        self.housingEXP = self.getHousingEXP()
+        self.prototypeEXP = self.getPrototypeEXP()
+        self.replayEXP = self.getReplayEXP()
+        self.pitEXP = self.getPitEXP()
+        self.superSmash = self.getSuperSmashEXP()
+        self.walls3EXP = self.getWalls3EXP()
+        self.speedUHCExp = self.getSpeedUHCEXP()
+        self.TNTgamesEXP = self.getTNTGamesEXP()
+        self.wallsEXP = self.getWallsEXP()
+        self.paintballEXP = self.getPaintballEXP()
+        self.MCGOEXP = self.getMCGOEXP()
+        self.skywarsEXP = self.SKYBLOCK()
+        self.UHCEXP = self.getUHCEXP()
+        self.vampireZEXP = self.getVampireZEXP()
+        self.bedwarsEXP = self.getBedWarsEXP()
+        self.battleGroundEXP = self.getBattleGroundEXP()
+        self.murderMysteryEXP = self.getMurderMysteryEXP()
 
     def getID(self):
         return self.data['_id']
@@ -40,13 +84,13 @@ class Guild:
     def getRanks(self):
         return self.data['ranks']
 
-    def getExperienceKings(self):
+    def getExperienceKingsQuest(self):
         return self.data['achievements']['EXPERIENCE_KINGS']
 
-    def getWinners(self):
+    def getWinnersQuest(self):
         return self.data['achievements']['WINNERS']
 
-    def getOnlinePlayers(self):
+    def getOnlinePlayersQuest(self):
         return self.data['achievements']['ONLINE_PLAYERS']
 
     def getEXP(self):
