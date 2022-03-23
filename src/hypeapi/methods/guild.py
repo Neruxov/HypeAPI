@@ -35,9 +35,6 @@ class Guild:
             if member['uuid'] == uuid:
                 return self.api.player(uuid=uuid)
 
-    def getGuildMember(self):
-
-
     def getRanks(self):
         return self.data['ranks']
 

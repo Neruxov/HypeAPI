@@ -1,2 +1,2 @@
-from bedwars import BedWars
-from skywars import SkyWars
+from .bedwars import BedWars
+from .skywars import SkyWars

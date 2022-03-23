@@ -1,2 +1,2 @@
-from guild import *
-from player import Player
+from .guild import *
+from .player import Player

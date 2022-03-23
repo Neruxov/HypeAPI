@@ -1,9 +1,9 @@
 import requests
 
-from errorhandler import *
-from methods.player import *
-from methods.guild import *
-from util.api_requests import *
+from .errorhandler import *
+from .methods.player import *
+from .methods.guild import *
+from .util.api_requests import *
 
 class API:
     def __init__(self, apikey):
@@ -16,7 +16,7 @@ class API:
         :param uuid: uuid of the player (use one of these)
         :return: player object
         """
-        return Player(self, getPlayerData(name=name, uuid=uuid))
+        return Player(self, getPlayerData(self, name=name, uuid=uuid))
 
     def guild(self, name=None, player=None, id=None):
-        return Guild(self, getGuildData(name=name, player=player, id=id))
+        return Guild(self, getGuildData(self, name=name, player=player, id=id))

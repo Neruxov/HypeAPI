@@ -3,6 +3,12 @@ import requests
 from .uuid import *
 from ..errorhandler import *
 
+def jsonToString(payload):
+    string = ""
+    for i in payload:
+        string += f"{i}={payload[i]}&"
+    return string[:-1]
+
 def getPlayerData(api, name=None, uuid=None):
     if name:
         uuid = NameToUUID(name)
@@ -14,7 +20,7 @@ def getPlayerData(api, name=None, uuid=None):
         'key': api.apikey
     })
 
-    data = requests.get(f"https://api.hypixel.net/player", json=payload).json()
+    data = requests.get(f"https://api.hypixel.net/player?{jsonToString(payload)}").json()
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -42,7 +48,7 @@ def getGuildData(api, name=None, player=None, id=None):
     else:
         raise NoArgumentsException
 
-    data = requests.get(f"https://api.hypixel.net/guild", json=payload).json()
+    data = requests.get(f"https://api.hypixel.net/guild?{jsonToString(payload)}").json()
 
     if data['success'] == False:
         raise APIException(data['cause'])
