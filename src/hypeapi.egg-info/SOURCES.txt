@@ -1,0 +1,16 @@
+LICENSE.txt
+README.md
+setup.cfg
+setup.py
+src/hype-api/__init__.py
+src/hype-api/engine.py
+src/hype-api/errorhandler.py
+src/hype-api/methods/__init__.py
+src/hype-api/methods/player.py
+src/hype-api/methods/games/__init__.py
+src/hype-api/methods/games/skywars.py
+src/hypeapi.egg-info/PKG-INFO
+src/hypeapi.egg-info/SOURCES.txt
+src/hypeapi.egg-info/dependency_links.txt
+src/hypeapi.egg-info/requires.txt
+src/hypeapi.egg-info/top_level.txt
