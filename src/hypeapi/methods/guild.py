@@ -6,6 +6,8 @@ class Guild:
         self.fulldata = data
         self.data =  self.fulldata['guild']
 
+        
+
     def getID(self):
         return self.data['_id']
 
@@ -38,8 +40,14 @@ class Guild:
     def getRanks(self):
         return self.data['ranks']
 
-    def getAchievements(self):
-        return self.data['achievements']
+    def getExperienceKings(self):
+        return self.data['achievements']['EXPERIENCE_KINGS']
+
+    def getWinners(self):
+        return self.data['achievements']['WINNERS']
+
+    def getOnlinePlayers(self):
+        return self.data['achievements']['ONLINE_PLAYERS']
 
     def getEXP(self):
         return self.data['exp']
