@@ -1,23 +1,25 @@
-import requests
+from .player import *
+from..util.api_requests import *
 
+class GuildPlayer(Player):
+    def __init__(self, api, data):
+        super().__init__(api, getPlayerData(api, uuid=data['uuid']))
 
-class GuildPlayer:
-    def __init__(self, data):
         self.data = data
 
         self.uuid = self.getUuid()
-        self.exp_history = self.getExpHistory()
-        self.joindate = self.getJoinedDate()
+        self.exp_history = self.getEXPHistory()
+        self.joinDate = self.getJoinDate()
         self.rank = self.getPlayerRank()
         self.questParticipation = self.getQuestParticipation()
 
     def getPlayerRank(self):
         return self.data['rank']
 
-    def getJoinedDate(self):
+    def getJoinDate(self):
         return self.data['joined']
 
-    def getExpHistory(self):
+    def getEXPHistory(self):
         return self.data['expHistory']
 
     def getQuestParticipation(self):

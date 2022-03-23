@@ -1,4 +1,5 @@
 from ..util.uuid import *
+from .guildplayer import *
 
 class Guild:
     def __init__(self, api, data):
@@ -45,7 +46,7 @@ class Guild:
         self.wallsEXP = self.getWallsEXP()
         self.paintballEXP = self.getPaintballEXP()
         self.MCGOEXP = self.getMCGOEXP()
-        self.skywarsEXP = self.SKYBLOCK()
+        self.skywarsEXP = self.getSkyWarsEXP()
         self.UHCEXP = self.getUHCEXP()
         self.vampireZEXP = self.getVampireZEXP()
         self.bedwarsEXP = self.getBedWarsEXP()
@@ -73,13 +74,26 @@ class Guild:
     def getMembers(self):
         return self.data['members']
 
-    def getMember(self, name='', uuid=''):
-        if not name:
+    def getPlayer(self, name=None, uuid=None):
+        if name:
             uuid = NameToUUID(name)
+
+        uuid = uuid.replace('-', '')
 
         for member in self.getMembers():
             if member['uuid'] == uuid:
                 return self.api.player(uuid=uuid)
+
+    def getGuildPlayer(self, name=None, uuid=None):
+        if name:
+            uuid = NameToUUID(name)
+
+        uuid = uuid.replace('-', '')
+
+        for member in self.getMembers():
+            if member['uuid'] == uuid:
+                return GuildPlayer(self.api, member)
+        return None
 
     def getRanks(self):
         return self.data['ranks']
@@ -118,7 +132,7 @@ class Guild:
         return self.data['guildExpByGameType']['SURVIVAL_GAMES']
 
     def getBuildBattleEXP(self):
-        return self.data['guildExpByGameType']['BUILDBATTLE']
+        return self.data['guildExpByGameType']['BUILD_BATTLE']
 
     def getSMPEXP(self):
         return self.data['guildExpByGameType']['SMP']
