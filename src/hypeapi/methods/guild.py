@@ -1,5 +1,5 @@
 from ..util.uuid import *
-from .guildplayer import *
+from .guildmember import *
 
 class Guild:
     def __init__(self, api, data):
@@ -74,7 +74,7 @@ class Guild:
     def getMembers(self):
         return self.data['members']
 
-    def getPlayer(self, name=None, uuid=None):
+    def getMember(self, name=None, uuid=None):
         if name:
             uuid = NameToUUID(name)
 
@@ -84,7 +84,7 @@ class Guild:
             if member['uuid'] == uuid:
                 return self.api.player(uuid=uuid)
 
-    def getGuildPlayer(self, name=None, uuid=None):
+    def getGuildMember(self, name=None, uuid=None):
         if name:
             uuid = NameToUUID(name)
 
@@ -92,7 +92,7 @@ class Guild:
 
         for member in self.getMembers():
             if member['uuid'] == uuid:
-                return GuildPlayer(self.api, member)
+                return GuildMember(self.api, member)
         return None
 
     def getRanks(self):
