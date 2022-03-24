@@ -23,6 +23,8 @@ class GuildMember(Player):
         return self.data['expHistory']
 
     def getQuestParticipation(self):
+        if not 'questParticipation' in self.data:
+            return None
         return self.data['questParticipation']
 
     def getUuid(self):

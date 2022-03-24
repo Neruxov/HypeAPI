@@ -9,6 +9,14 @@ def jsonToString(payload):
         string += f"{i}={payload[i]}&"
     return string[:-1]
 
+def checkKeyValidity(api):
+    payload = ({
+        'key': api.apikey
+    })
+    data = requests.get(f"https://api.hypixel.net/key?{jsonToString(payload)}").json()
+    if data['success'] == False:
+        return None
+
 def getPlayerData(api, name=None, uuid=None):
     if name:
         uuid = NameToUUID(name)
@@ -54,5 +62,23 @@ def getGuildData(api, name=None, player=None, id=None):
         raise APIException(data['cause'])
     elif not 'guild' in data or data['guild'] == None:
         raise APIException('Non-existent guild')
+
+    return data
+
+def getSkyBlockProfiles(api, uuid=None, player=None):
+    if player:
+        uuid = player.uuid
+
+    payload = ({
+        'uuid': uuid,
+        'key': api.apikey
+    })
+
+    data = requests.get(f"https://api.hypixel.net/skyblock/profiles?{jsonToString(payload)}").json()
+
+    if data['success'] == False:
+        raise APIException(data['cause'])
+    elif not 'profiles' in data or data['profiles'] == None:
+        return None
 
     return data
