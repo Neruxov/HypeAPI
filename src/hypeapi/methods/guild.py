@@ -45,7 +45,7 @@ class Guild:
         self.wallsEXP = self.getWallsEXP()
         self.paintballEXP = self.getPaintballEXP()
         self.MCGOEXP = self.getMCGOEXP()
-        self.skywarsEXP = self.SKYBLOCK()
+        self.skywarsEXP = self.getSkyWarsEXP()
         self.UHCEXP = self.getUHCEXP()
         self.vampireZEXP = self.getVampireZEXP()
         self.bedwarsEXP = self.getBedWarsEXP()
@@ -118,7 +118,7 @@ class Guild:
         return self.data['guildExpByGameType']['SURVIVAL_GAMES']
 
     def getBuildBattleEXP(self):
-        return self.data['guildExpByGameType']['BUILDBATTLE']
+        return self.data['guildExpByGameType']['BUILD_BATTLE']
 
     def getSMPEXP(self):
         return self.data['guildExpByGameType']['SMP']
