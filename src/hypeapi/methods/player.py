@@ -1,10 +1,10 @@
-import requests
 import math
 
 from .games.skywars import *
 from .games.bedwars import *
-from .games.murdermystery import *
-from .games.buildbuttle import *
+from hypeapi.methods.games.skyblock.skyblock_profile import *
+
+from ..util.api_requests import *
 
 class Player:
     def __init__(self, api, data):
@@ -39,8 +39,6 @@ class Player:
 
         self.skywars = SkyWars(self)
         self.bedwars = BedWars(self)
-        self.murdermystery = MurderMystery(self)
-        self.buildbattle = BuildBattle(self)
 
     def refresh(self):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={self.api.apikey}").json()
@@ -70,6 +68,19 @@ class Player:
 
     def getGuild(self):
         return self.api.guild(player=self.uuid)
+
+    def getSkyBlockProfiles(self):
+        data = getSkyBlockProfiles(self.api, self.uuid)
+
+        if data == None:
+            return None
+
+        profiles = []
+
+        for i in data['profiles']:
+            profiles.append(SkyblockProfile(self.api, i))
+
+        return profiles
 
     def getID(self):
         '''
@@ -154,6 +165,8 @@ class Player:
         return None
 
     def getUserLanguage(self):
+        if not 'userLanguage' in self.data:
+            return None
         return self.data['userLanguage']
 
     def getNetworkExp(self):
@@ -163,6 +176,8 @@ class Player:
         return (1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp()))
 
     def getKarma(self):
+        if not 'karma' in self.data:
+            return None
         return self.data['karma']
 
     def getMcVersion(self):
@@ -244,9 +259,3 @@ class Player:
 
     def getBedWars(self):
         return self.bedwars
-
-    def getMurderMystery(self):
-        return self.murdermystery
-
-    def getBuildBattle(self):
-        return self.buildbattle

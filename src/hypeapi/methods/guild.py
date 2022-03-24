@@ -2,10 +2,10 @@ from ..util.uuid import *
 from .guildmember import *
 
 class Guild:
-    def __init__(self, api, data):
+    def __init__(self, api, data, members=False):
         self.api = api
         self.fulldata = data
-        self.data =  self.fulldata['guild']
+        self.data = self.fulldata['guild']
 
         self.id = self.getID()
         self.name = self.getName()
@@ -19,7 +19,8 @@ class Guild:
         self.tagColor = self.getTagColor()
         self.description = self.getDescription()
 
-        self.members = self.getMembers()
+        if members:
+            self.members = self.getGuildMembers()
         self.ranks = self.getRanks()
 
         self.experienceKingsQuest = self.getExperienceKingsQuest()
@@ -71,7 +72,28 @@ class Guild:
     def getTimeCreated(self):
         return self.data['created']
 
+    def getGuildMembers(self):
+        '''
+        Returns a list of guild members, where each one is an instance of GuildMember
+        :return:
+        '''
+        if self.data['members'] == None:
+            return None
+
+        members = []
+
+        for i in self.data['members']:
+            members.append(GuildMember(self.api, i))
+
+        self.members = members
+
+        return members
+
     def getMembers(self):
+        '''
+        Returns a raw list of members
+        :return:
+        '''
         return self.data['members']
 
     def getMember(self, name=None, uuid=None):
