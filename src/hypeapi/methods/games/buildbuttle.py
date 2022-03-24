@@ -13,18 +13,28 @@ class BuildBattle:
         self.score = self.getScore()
 
     def getCoins(self):
+        if not 'coins' in self.bbdata:
+            return None
         return self.bbdata['coins']
 
     def getCorrect_guesses(self):
+        if not 'correct_guesses' in self.bbdata:
+            return None
         return self.bbdata['correct_guesses']
 
     def getWins(self):
+        if not 'wins' in self.bbdata:
+            return None
         return self.bbdata['wins']
 
     def getSuperVotes(self):
+        if not 'super_votes' in self.bbdata:
+            return None
         return self.bbdata['super_votes']
 
     def getScore(self):
+        if not 'score' in self.bbdata:
+            return None
         return self.bbdata['score']
 
 

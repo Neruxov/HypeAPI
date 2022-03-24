@@ -2,6 +2,8 @@ import math
 
 from .games.skywars import *
 from .games.bedwars import *
+from .games.murdermystery import *
+from .games.buildbuttle import *
 from hypeapi.methods.games.skyblock.skyblock_profile import *
 
 from ..util.api_requests import *
@@ -39,6 +41,8 @@ class Player:
 
         self.skywars = SkyWars(self)
         self.bedwars = BedWars(self)
+        self.murdermystery = MurderMystery(self)
+        self.buildbattle = BuildBattle(self)
 
     def refresh(self):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={self.api.apikey}").json()
@@ -259,3 +263,9 @@ class Player:
 
     def getBedWars(self):
         return self.bedwars
+
+    def getMurderMystery(self):
+        return self.murdermystery
+
+    def getBuildBattle(self):
+        return self.buildbattle
