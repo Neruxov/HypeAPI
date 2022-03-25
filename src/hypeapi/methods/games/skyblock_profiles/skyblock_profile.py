@@ -1,8 +1,7 @@
 from .skyblock_profile_member import *
 
-class SkyblockProfile:
-    def __init__(self, api, data):
-        self.api = api
+class SkyBlockProfile:
+    def __init__(self, data):
         self.data = data
 
     def getProfileID(self):
@@ -11,15 +10,16 @@ class SkyblockProfile:
     def getCuteName(self):
         return self.data['cute_name']
 
-    def getSkyblockMembers(self):
-        if self.data['members'] == None:
+    def getProfileMembers(self):
+        if self.data['members'] is None:
             return None
 
         members = []
 
         for i in self.data['members']:
-            members.append(SkyblockProfile(self.api, i))
-
-        self.members = members
+            members.append(SkyBlockMember(self.data['members'][i], i))
 
         return members
+
+    def getMembers(self):
+        return self.data['members']

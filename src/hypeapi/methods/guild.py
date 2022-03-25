@@ -1,4 +1,3 @@
-from ..util.uuid import *
 from .guildmember import *
 
 class Guild:
@@ -11,7 +10,7 @@ class Guild:
         self.name = self.getName()
         self.nameLower = self.getNameLower()
         self.coins = self.getCoins()
-        self.coinsEveer = self.getCoinsEver()
+        self.coinsEver = self.getCoinsEver()
         self.timeCreated = self.getTimeCreated()
         self.exp = self.getEXP()
         self.public = self.isPublic()
@@ -73,16 +72,17 @@ class Guild:
         return self.data['created']
 
     def getGuildMembers(self):
-        '''
+        """
         Returns a list of guild members, where each one is an instance of GuildMember
         :return:
-        '''
-        if self.data['members'] == None:
+        """
+        if self.data['members'] is None:
             return None
 
         members = []
 
         for i in self.data['members']:
+            print(i)
             members.append(GuildMember(self.api, i))
 
         self.members = members
@@ -90,10 +90,10 @@ class Guild:
         return members
 
     def getMembers(self):
-        '''
+        """
         Returns a raw list of members
         :return:
-        '''
+        """
         return self.data['members']
 
     def getMember(self, name=None, uuid=None):

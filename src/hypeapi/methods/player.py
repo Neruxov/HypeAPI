@@ -4,7 +4,7 @@ from .games.skywars import *
 from .games.bedwars import *
 from .games.murdermystery import *
 from .games.buildbuttle import *
-from hypeapi.methods.games.skyblock.skyblock_profile import *
+from .games.skyblock import *
 
 from ..util.api_requests import *
 
@@ -43,9 +43,12 @@ class Player:
         self.bedwars = BedWars(self)
         self.murdermystery = MurderMystery(self)
         self.buildbattle = BuildBattle(self)
+        self.skyblock = SkyBlock(self)
 
     def refresh(self):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={self.api.apikey}").json()
+        self.fulldata = data
+        self.data = data['player']
 
         self.id = self.getID()
         self.displayname = self.getDisplayName()
@@ -76,118 +79,122 @@ class Player:
     def getSkyBlockProfiles(self):
         data = getSkyBlockProfiles(self.api, self.uuid)
 
-        if data == None:
+        if data is None:
             return None
 
         profiles = []
 
         for i in data['profiles']:
-            profiles.append(SkyblockProfile(self.api, i))
+            profiles.append(SkyBlockProfile(i))
 
         return profiles
 
     def getID(self):
-        '''
+        """
         No wonder what this means .-. (probably hypixel player id)
         :return: id [string]
-        '''
+        """
         return self.data['_id']
 
     def getUUID(self):
-        '''
+        """
         Returns the player's uuid (Unique User ID)
         :return: uuid [string]
-        '''
+        """
         return self.data['uuid']
 
     def getDisplayName(self):
-        '''
+        """
         Returns the player's display name
         :return: display name [string]
-        '''
+        """
         return self.data['displayname']
 
     def getFirstLogin(self):
-        '''
+        """
         Returns the player's first login time
         :return: first login time [integer, unix ms]
-        '''
+        """
         return self.data['firstLogin']
 
     def getKnownAliases(self):
-        '''
-        Returns plauer's known nicknames
+        """
+        Returns player's known nicknames
         :return: player's known nicknames [list of strings]
-        '''
+        """
         return self.data['knownAliases']
 
     def getKnownAliasesLower(self):
-        '''
-        Returns plauer's known nicknames (all lowercase)
+        """
+        Returns player's known nicknames (all lowercase)
         :return: player's known nicknames (all lowercase) [list of strings]
-        '''
+        """
         return self.data['knownAliasesLower']
 
     def getLastLogin(self):
-        '''
+        """
         Returns player's last login time
         :return: last login time [integer, unix ms]
-        '''
+        """
         if 'lastLogin' in self.data:
             return self.data['lastLogin']
         return None
 
     def getPlayerName(self):
-        '''
+        """
         Returns player's nickname
         :return: player's name
-        '''
+        """
         return self.data['playername']
 
     def getAchievementsOneTime(self):
-        '''
+        """
         Returns all player's achievements
         :return: player's achievements [list of strings]
-        '''
+        """
         return self.data['achievementsOneTime']
 
     def getHasAchievement(self, achievement):
-        '''
+        """
         Returns whether player has an achievement or not
         :param achievement: achievement name
         :return: whether the player has the achievement or not [bool]
-        '''
+        """
         return achievement in self.data['achievementsOneTime']
 
     def getLastLogout(self):
-        '''
+        """
         Returns player's last logout time
         :return: last logout time [integer, unix ms]
-        '''
+        """
         if 'lastLogout' in self.data:
             return self.data['lastLogout']
         return None
 
     def getUserLanguage(self):
-        if not 'userLanguage' in self.data:
+        if 'userLanguage' not in self.data:
             return None
         return self.data['userLanguage']
 
     def getNetworkExp(self):
+        if 'networkExp' not in self.data:
+            return None
         return self.data['networkExp']
 
     def getNetworkLevel(self):
-        return (1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp()))
+        if self.getNetworkExp() is None:
+            return 1
+        return 1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp())
 
     def getKarma(self):
-        if not 'karma' in self.data:
+        if 'karma' not in self.data:
             return None
         return self.data['karma']
 
     def getMcVersion(self):
-        if 'mcVersionRp' in self.data:
-            return self.data['mcVersionRp']
-        return None
+        if 'mcVersionRp' not in self.data:
+            return None
+        return self.data['mcVersionRp']
 
     def getHypixelForums(self):
         if 'socialMedia' in self.data:
@@ -239,24 +246,24 @@ class Player:
         return rank
 
     def getRankColor(self):
-        if 'rankPlusColor' in self.data:
-            return self.data['rankPlusColor']
-        return None
+        if 'rankPlusColor' not in self.data:
+            return None
+        return self.data['rankPlusColor']
 
     def getMonthlyRankColor(self):
-        if 'monthlyPlusColor' in self.data:
-            return self.data['monthlyPlusColor']
-        return None
+        if 'monthlyPlusColor' not in self.data:
+            return None
+        return self.data['monthlyPlusColor']
 
     def getMonthlyPackageRank(self):
-        if 'monthlyPackageRank' in self.data:
-            return self.data['monthlyPackageRank']
-        return None
+        if 'monthlyPackageRank' not in self.data:
+            return None
+        return self.data['monthlyPackageRank']
 
     def getMostRecentMonthlyPackageRank(self):
-        if 'mostRecentMonthlyPackageRank' in self.data:
-            return self.data['mostRecentMonthlyPackageRank']
-        return None
+        if 'mostRecentMonthlyPackageRank' not in self.data:
+            return None
+        return self.data['mostRecentMonthlyPackageRank']
 
     def getSkyWars(self):
         return self.skywars
@@ -269,3 +276,6 @@ class Player:
 
     def getBuildBattle(self):
         return self.buildbattle
+
+    def getSkyBlock(self):
+        return self.skyblock

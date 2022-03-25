@@ -1,10 +1,8 @@
-import requests
-
 class SkyWars:
     def __init__(self, player):
         self.player = player
         self.data = self.player.data
-        if not 'SkyWars' in self.data['stats']:
+        if 'SkyWars' not in self.data['stats']:
             self.swdata = self.data['stats']
         else:
             self.swdata = self.data['stats']['SkyWars']
@@ -34,13 +32,13 @@ class SkyWars:
         self.totalheads = self.getTotalHeads()
 
     def getExp(self):
-        if not 'skywars_experience' in self.swdata:
+        if 'skywars_experience' not in self.swdata:
             return None
         return self.swdata['skywars_experience']
 
     def getLevel(self):
         xp = self.getExp()
-        if xp == None:
+        if xp is None:
             return 1
         xps = [0, 20, 70, 150, 250, 500, 1000, 2000, 3500, 6000, 10000, 15000]
         if xp >= 15000:
@@ -51,122 +49,122 @@ class SkyWars:
                     return i + float(xp - xps[i - 1]) / (xps[i] - xps[i - 1])
 
     def getCoins(self):
-        if not 'coins' in self.swdata:
+        if 'coins' not in self.swdata:
             return None
         return self.swdata['coins']
 
     def getWins(self):
-        if not 'wins' in self.swdata:
+        if 'wins' not in self.swdata:
             return None
         return self.swdata['wins']
 
     def getLosses(self):
-        if not 'losses' in self.swdata:
+        if 'losses' not in self.swdata:
             return None
         return self.swdata['losses']
 
     def getKills(self):
-        if not 'kills' in self.swdata:
+        if 'kills' not in self.swdata:
             return None
         return self.swdata['kills']
 
     def getDeaths(self):
-        if not 'deaths' in self.swdata:
+        if 'deaths' not in self.swdata:
             return None
         return self.swdata['deaths']
 
     def getAssists(self):
-        if not 'assists' in self.swdata:
+        if 'assists' not in self.swdata:
             return None
         return self.swdata['assists']
 
     def getSouls(self):
-        if not 'souls' in self.swdata:
+        if 'souls' not in self.swdata:
             return None
         return self.swdata['souls']
 
     def getWlr(self):
-        if self.getWins() == None and self.getLosses() == None:
+        if self.getWins() is None and self.getLosses() is None:
             return 0
-        if self.getWins() == None:
+        if self.getWins() is None:
             return 1 / self.getLosses()
-        if self.getLosses() == None:
+        if self.getLosses() is None:
             return self.getWins()
         return self.getWins() / self.getLosses()
 
     def getKdr(self):
-        if self.getKills() == None and self.getDeaths() == None:
+        if self.getKills() is None and self.getDeaths() is None:
             return 0
-        if self.getKills() == None:
+        if self.getKills() is None:
             return 1 / self.getDeaths()
-        if self.getDeaths() == None:
+        if self.getDeaths() is None:
             return self.getKills()
         return self.getKills() / self.getDeaths()
 
     def getSoulsGathered(self):
-        if not 'souls_gathered' in self.swdata:
+        if 'souls_gathered' not in self.swdata:
             return None
         return self.swdata['souls_gathered']
 
     def getArrowsShot(self):
-        if not 'arrows_shot' in self.swdata:
+        if 'arrows_shot' not in self.swdata:
             return None
         return self.swdata['arrows_shot']
 
     def getArrowsHit(self):
-        if not 'arrows_hit' in self.swdata:
+        if 'arrows_hit' not in self.swdata:
             return None
         return self.swdata['arrows_hit']
 
     def getArrowsHMR(self):
-        '''
+        """
         Returns player's arrows hit/miss ratio
         :return: player's hit/miss ratio [float]
-        '''
-        if self.getArrowsHit() == None and self.getArrowsShot() == None:
+        """
+        if self.getArrowsHit() is None and self.getArrowsShot() is None:
             return 0
-        if self.getArrowsHit() == None:
+        if self.getArrowsHit() is None:
             return 1 / self.getArrowsShot()
-        if self.getArrowsShot() == None:
+        if self.getArrowsShot() is None:
             return self.getArrowsHit()
         return self.getArrowsHit() / self.getArrowsShot()
 
     def getEggsThrown(self):
-        if not 'egg_thrown' in self.swdata:
+        if 'egg_thrown' not in self.swdata:
             return None
         return self.swdata['egg_thrown']
 
     def getEnderpealsThrown(self):
-        if not 'enderpearls_thrown' in self.swdata:
+        if 'enderpearls_thrown' not in self.swdata:
             return None
         return self.swdata['enderpearls_thrown']
 
     def getBlocksPlaced(self):
-        if not 'blocks_placed' in self.swdata:
+        if 'blocks_placed' not in self.swdata:
             return None
         return self.swdata['blocks_placed']
 
     def getBlocksBroken(self):
-        if not 'blocks_broken' in self.swdata:
+        if 'blocks_broken' not in self.swdata:
             return None
         return self.swdata['blocks_broken']
 
     def getSoulWell(self):
-        if not 'soul_well' in self.swdata:
+        if 'soul_well' not in self.swdata:
             return None
         return self.swdata['soul_well']
 
     def getSoulWellRares(self):
-        if not 'soul_well_rares' in self.swdata:
+        if 'soul_well_rares' not in self.swdata:
             return None
         return self.swdata['soul_well_rares']
 
     def getSoulWellLegendaries(self):
-        if not 'soul_well_legendaries' in self.swdata:
+        if 'soul_well_legendaries' not in self.swdata:
             return None
         return self.swdata['soul_well_legendaries']
 
     def getTotalHeads(self):
-        if not 'heads' in self.swdata:
+        if 'heads' not in self.swdata:
             return None
         return self.swdata['heads']

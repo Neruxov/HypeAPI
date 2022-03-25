@@ -65,10 +65,7 @@ def getGuildData(api, name=None, player=None, id=None):
 
     return data
 
-def getSkyBlockProfiles(api, uuid=None, player=None):
-    if player:
-        uuid = player.uuid
-
+def getSkyBlockProfiles(api, uuid=None):
     payload = ({
         'uuid': uuid,
         'key': api.apikey
