@@ -55,3 +55,4 @@ class MurderMystery:
         if 'murder_wins' not in self.mmdata:
             return None
         return self.mmdata['murderer_wins']
+

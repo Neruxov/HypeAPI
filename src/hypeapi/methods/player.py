@@ -5,7 +5,8 @@ from .games.bedwars import *
 from .games.murdermystery import *
 from .games.buildbuttle import *
 from .games.skyblock import *
-
+from .games.duels import *
+from .games.tntgames import *
 from ..util.api_requests import *
 
 class Player:
@@ -43,7 +44,9 @@ class Player:
         self.bedwars = BedWars(self)
         self.murdermystery = MurderMystery(self)
         self.buildbattle = BuildBattle(self)
-        self.skyblock = SkyBlock(self)
+#        self.skyblock = SkyBlock(self)
+        self.duels = Duels(self)
+        self.tntgames = TNTGames(self)
 
     def refresh(self):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={self.api.apikey}").json()
@@ -277,5 +280,11 @@ class Player:
     def getBuildBattle(self):
         return self.buildbattle
 
-    def getSkyBlock(self):
-        return self.skyblock
+#    def getSkyBlock(self):
+#        return self.skyblock
+
+    def getDuels(self):
+        return self.duels
+
+    def getTntGames(self):
+        return self.tntgames
