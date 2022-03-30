@@ -44,7 +44,7 @@ class Player:
         self.bedwars = BedWars(self)
         self.murdermystery = MurderMystery(self)
         self.buildbattle = BuildBattle(self)
-#        self.skyblock = SkyBlock(self)
+        self.skyblock = SkyBlock(self)
         self.duels = Duels(self)
         self.tntgames = TNTGames(self)
 
@@ -280,8 +280,8 @@ class Player:
     def getBuildBattle(self):
         return self.buildbattle
 
-#    def getSkyBlock(self):
-#        return self.skyblock
+    def getSkyBlock(self):
+        return self.skyblock
 
     def getDuels(self):
         return self.duels
