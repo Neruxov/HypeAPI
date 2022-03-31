@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='hypeapi',
-    version='0.0.1',
+    version='0.0.2.1',
     license='.-.',
     author='Neruxov',
     author_email='k.neruxov@gmail.com',

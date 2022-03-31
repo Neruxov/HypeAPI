@@ -1,13 +1,6 @@
 from src.hypeapi.engine import *
 
-
 api = API("d882f221-6cc9-4f95-914c-e75750555a21")
 
-player = api.player(name="theliryzz")
-#guild = api.guild(player="fcd4a146-cb09-4d87-9e84-80f6aa35603f", members=False)
-
-# profiles = player.getSkyBlock().getProfiles()
-# for i in profiles:
-#     print(i.getProfileMembers())
-
-print(player.getUhc().kills)
+player = api.player(uuid="164bd0ea-a46e-4db1-8278-dd172409647a")
+print(player.playerName)
