@@ -7,6 +7,7 @@ from .games.buildbuttle import *
 from .games.skyblock import *
 from .games.duels import *
 from .games.tntgames import *
+from .games.UHC import *
 from ..util.api_requests import *
 
 class Player:
@@ -47,6 +48,7 @@ class Player:
         self.skyblock = SkyBlock(self)
         self.duels = Duels(self)
         self.tntgames = TNTGames(self)
+        self.uhc = UHC(self)
 
     def refresh(self):
         data = requests.get(f"https://api.hypixel.net/player?uuid={self.uuid}&key={self.api.apikey}").json()
@@ -288,3 +290,6 @@ class Player:
 
     def getTntGames(self):
         return self.tntgames
+
+    def getUhc(self):
+        return self.uhc
