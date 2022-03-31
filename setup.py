@@ -1,10 +1,8 @@
 from setuptools import setup, find_packages
 
-print(find_packages('src'))
-
 setup(
     name='hypeapi',
-    version='0.0.2.1',
+    version='0.0.2.2',
     license='.-.',
     author='Neruxov',
     author_email='k.neruxov@gmail.com',
@@ -15,4 +13,5 @@ setup(
     install_requires=[
           'requests'
     ],
+    python_requires='<3.10',
 )
