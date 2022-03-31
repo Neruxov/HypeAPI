@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: hypeapi
-Version: 0.0.2.2
+Version: 0.0.2.3
 Summary: UNKNOWN
 Home-page: https://github.com/Neruxov/HypeAPI
 Author: Neruxov
@@ -8,7 +8,7 @@ Author-email: k.neruxov@gmail.com
 License: .-.
 Keywords: example project
 Platform: UNKNOWN
-Requires-Python: <3.10
+Requires-Python: >=3.7
 License-File: LICENSE.txt
 
 UNKNOWN

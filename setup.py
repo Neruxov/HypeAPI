@@ -9,7 +9,7 @@ setup(
     packages=find_packages('src'),
     package_dir={'': 'src'},
     url='https://github.com/Neruxov/HypeAPI',
-    keywords='example project',
+    keywords='hypixel hypixel_api hypixel_api_python',
     install_requires=[
           'requests'
     ],
