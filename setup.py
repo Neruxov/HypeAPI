@@ -1,5 +1,7 @@
 from setuptools import setup, find_packages
 
+print(find_packages('src'))
+
 setup(
     name='hypeapi',
     version='0.0.2.1',
