@@ -7,7 +7,8 @@ class API:
         self.debug = debug
         self.logger = Logger()
         self.apikey = apikey
-        checkKeyValidity(self)
+        if not checkKeyValidity(self):
+            raise APIException("Invalid API key")
 
     def player(self, name=None, uuid=None):
         """

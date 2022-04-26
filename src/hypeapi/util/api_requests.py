@@ -28,10 +28,12 @@ def checkKeyValidity(api):
     if data['success'] == False:
         if api.debug:
             api.logger.log(f"Received an error from /key: {data['cause']}", file=__name__)
-        return None
+        return False
 
     if api.debug:
         api.logger.log(f"Loaded a valid api key: Owner: {UUIDToName(data['record']['owner'])}, Limit: {data['record']['limit']}, Total Requests: {data['record']['totalQueries']}", file=__name__)
+
+    return True
 
 def getPlayerData(api, name=None, uuid=None):
     if name:

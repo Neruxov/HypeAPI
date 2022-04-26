@@ -2,7 +2,7 @@ from src.hypeapi.engine import *
 from datetime import datetime
 from colorama import Fore
 
-api = API("d882f221-6cc9-4f95-914c-e75750555a21", debug=False)
+api = API("d882f221-6cc9-4f95-914c-e75750555a21", debug=True)
 
 skyblock = api.skyblock()
 skyblock_auctions = skyblock.getAuctions(page=1)
