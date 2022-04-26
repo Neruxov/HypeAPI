@@ -4,7 +4,7 @@ from .games.skywars import *
 from .games.bedwars import *
 from .games.murdermystery import *
 from .games.buildbuttle import *
-from .games.skyblock import *
+from .games.skyblock_player import *
 from .games.duels import *
 from .games.tntgames import *
 from .games.UHC import *
@@ -18,6 +18,9 @@ class Player:
         self.uuid = self.data['uuid']
         self.fulldata = data
 
+        self.setVariabes()
+
+    def setVariabes(self):
         self.id = self.getID()
         self.displayname = self.getDisplayName()
         self.firstLogin = self.getFirstLogin()
@@ -45,7 +48,7 @@ class Player:
         self.bedwars = BedWars(self)
         self.murdermystery = MurderMystery(self)
         self.buildbattle = BuildBattle(self)
-        self.skyblock = SkyBlock(self)
+        self.skyblock = SkyBlockPlayer(self)
         self.duels = Duels(self)
         self.tntgames = TNTGames(self)
         self.uhc = UHC(self)

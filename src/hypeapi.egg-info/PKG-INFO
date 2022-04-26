@@ -6,7 +6,7 @@ Home-page: https://github.com/Neruxov/HypeAPI
 Author: Neruxov
 Author-email: k.neruxov@gmail.com
 License: .-.
-Keywords: example project
+Keywords: hypixel hypixel_api hypixel_api_python
 Platform: UNKNOWN
 Requires-Python: >=3.7
 License-File: LICENSE.txt

@@ -1,29 +1,14 @@
-from .skyblock_profiles.skyblock_profile import *
 from ...util.api_requests import *
 
-
 class SkyBlock:
-    def __init__(self, player):
-        self.player = player
-        self.profiles = self.getProfiles()
+    def __init__(self, api):
+        self.api = api
 
-    def getProfiles(self):
-        player_profiles = getSkyBlockProfiles(self.player.api, uuid=self.player.uuid)
+    def getAuctions(self, page=0):
+        return getSkyBlockAuctions(self.api, page)['auctions']
 
-        if player_profiles == None:
-            return None
+    def getAuction(self, auction_uuid=None, player=None, profile=None):
+        return getSkyBlockAuction(self.api, auction_uuid, player, profile)
 
-        if not 'profiles' in player_profiles:
-            return None
-
-        player_profiles = player_profiles['profiles']
-
-        if player_profiles is None:
-            return None
-
-        profiles = []
-
-        for i in player_profiles:
-            profiles.append(SkyBlockProfile(i))
-
-        return profiles
+    def getItems(self):
+        return getSkyBlockItems(self.api)['items']

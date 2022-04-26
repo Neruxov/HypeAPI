@@ -1,12 +1,11 @@
-import requests
-
-from .errorhandler import *
-from .methods.player import *
 from .methods.guild import *
-from .util.api_requests import *
+from .util.logger import *
+from .methods.games.skyblock import *
 
 class API:
-    def __init__(self, apikey):
+    def __init__(self, apikey, debug=False):
+        self.debug = debug
+        self.logger = Logger()
         self.apikey = apikey
         checkKeyValidity(self)
 
@@ -21,3 +20,7 @@ class API:
 
     def guild(self, name=None, player=None, id=None, members=False):
         return Guild(self, getGuildData(self, name=name, player=player, id=id), members=members)
+
+    def skyblock(self):
+        return SkyBlock(self)
+

@@ -21,6 +21,7 @@ src/hypeapi/methods/games/buildbuttle.py
 src/hypeapi/methods/games/duels.py
 src/hypeapi/methods/games/murdermystery.py
 src/hypeapi/methods/games/skyblock.py
+src/hypeapi/methods/games/skyblock_player.py
 src/hypeapi/methods/games/skywars.py
 src/hypeapi/methods/games/tntgames.py
 src/hypeapi/methods/games/skyblock_profiles/__init__.py
@@ -28,4 +29,5 @@ src/hypeapi/methods/games/skyblock_profiles/skyblock_profile.py
 src/hypeapi/methods/games/skyblock_profiles/skyblock_profile_member.py
 src/hypeapi/util/__init__.py
 src/hypeapi/util/api_requests.py
+src/hypeapi/util/logger.py
 src/hypeapi/util/uuid.py

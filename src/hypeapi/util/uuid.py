@@ -1,9 +1,15 @@
 import requests
 
 def NameToUUID(name):
-    data = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{name}").json()
+    try:
+        data = requests.get(f"https://api.mojang.com/users/profiles/minecraft/{name}").json()
+    except:
+        return None
     return data['id']
 
 def UUIDToName(uuid):
-    data = requests.get(f"https://sessionserver.mojang.com/session/minecraft/profile/{uuid.replace('-', '')}").json()
+    try:
+        data = requests.get(f"https://sessionserver.mojang.com/session/minecraft/profile/{uuid.replace('-', '')}").json()
+    except:
+        return None
     return data['name']
