@@ -1,18 +1,19 @@
 import math
 
-from .games.UHC import *
-from .games.bedwars import *
-from .games.buildbuttle import *
-from .games.duels import *
-from .games.murdermystery import *
-from .games.skyblock_player import *
 from .games.skywars import *
+from .games.bedwars import *
+from .games.murdermystery import *
+from .games.buildbuttle import *
+from .games.skyblock_player import *
+from .games.duels import *
 from .games.tntgames import *
+from .games.UHC import *
 from ..util.api_requests import *
 
 
 class Player:
     def __init__(self, api, data):
+
         self.api = api
         self.data = data['player']
         self.name = self.data['playername']
@@ -22,28 +23,28 @@ class Player:
         self.setVariabes()
 
     def setVariabes(self):
-        self.id = self.getID()
-        self.displayname = self.getDisplayName()
-        self.firstLogin = self.getFirstLogin()
-        self.knownAliases = self.getKnownAliases()
-        self.knownAliasesLower = self.getKnownAliasesLower()
-        self.lastLogin = self.getLastLogin()
-        self.playerName = self.getPlayerName()
-        self.achievementsOneTime = self.getAchievementsOneTime()
-        self.userLanguage = self.getUserLanguage()
-        self.networkExp = self.getNetworkExp()
-        self.networkLevel = self.getNetworkLevel()
-        self.karma = self.getKarma()
-        self.mcVersion = self.getMcVersion()
-        self.hypixelForums = self.getHypixelForums()
-        self.discord = self.getDiscord()
-        self.twitter = self.getTwitter()
-        self.youtube = self.getYoutube()
-        self.rank = self.getRank()
-        self.rankColor = self.getRankColor()
-        self.monthlyPlusColor = self.getMonthlyRankColor()
-        self.monthlyPackageRank = self.getMonthlyPackageRank()
-        self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
+        self.id = self.getID
+        self.displayname = self.getDisplayName
+        self.firstLogin = self.getFirstLogin
+        self.knownAliases = self.getKnownAliases
+        self.knownAliasesLower = self.getKnownAliasesLower
+        self.lastLogin = self.getLastLogin
+        self.playerName = self.getPlayerName
+        self.achievementsOneTime = self.getAchievementsOneTime
+        self.userLanguage = self.getUserLanguage
+        self.networkExp = self.getNetworkExp
+        self.networkLevel = self.getNetworkLevel
+        self.karma = self.getKarma
+        self.mcVersion = self.getMcVersion
+        self.hypixelForums = self.getHypixelForums
+        self.discord = self.getDiscord
+        self.twitter = self.getTwitter
+        self.youtube = self.getYoutube
+        self.rank = self.getRank
+        self.rankColor = self.getRankColor
+        self.monthlyPlusColor = self.getMonthlyRankColor
+        self.monthlyPackageRank = self.getMonthlyPackageRank
+        self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank
 
         self.skywars = SkyWars(self)
         self.bedwars = BedWars(self)
@@ -59,29 +60,30 @@ class Player:
         self.fulldata = data
         self.data = data['player']
 
-        self.id = self.getID()
-        self.displayname = self.getDisplayName()
-        self.firstLogin = self.getFirstLogin()
-        self.knownAliases = self.getKnownAliases()
-        self.knownAliasesLower = self.getKnownAliasesLower()
-        self.lastLogin = self.getLastLogin()
-        self.playerName = self.getPlayerName()
-        self.achievementsOneTime = self.getAchievementsOneTime()
-        self.userLanguage = self.getUserLanguage()
-        self.networkExp = self.getNetworkExp()
-        self.networkLevel = self.getNetworkLevel()
-        self.karma = self.getKarma()
-        self.mcVersion = self.getMcVersion()
-        self.hypixelForums = self.getHypixelForums()
-        self.discord = self.getDiscord()
-        self.twitter = self.getTwitter()
-        self.youtube = self.getYoutube()
-        self.rank = self.getRank()
-        self.rankColor = self.getRankColor()
-        self.monthlyPlusColor = self.getMonthlyRankColor()
-        self.monthlyPackageRank = self.getMonthlyPackageRank()
-        self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank()
+        self.id = self.getID
+        self.displayname = self.getDisplayName
+        self.firstLogin = self.getFirstLogin
+        self.knownAliases = self.getKnownAliases
+        self.knownAliasesLower = self.getKnownAliasesLower
+        self.lastLogin = self.getLastLogin
+        self.playerName = self.getPlayerName
+        self.achievementsOneTime = self.getAchievementsOneTime
+        self.userLanguage = self.getUserLanguage
+        self.networkExp = self.getNetworkExp
+        self.networkLevel = self.getNetworkLevel
+        self.karma = self.getKarma
+        self.mcVersion = self.getMcVersion
+        self.hypixelForums = self.getHypixelForums
+        self.discord = self.getDiscord
+        self.twitter = self.getTwitter
+        self.youtube = self.getYoutube
+        self.rank = self.getRank
+        self.rankColor = self.getRankColor
+        self.monthlyPlusColor = self.getMonthlyRankColor
+        self.monthlyPackageRank = self.getMonthlyPackageRank
+        self.mostRecentMonthlyPackageRank = self.getMostRecentMonthlyPackageRank
 
+    @property
     def getGuild(self):
         return self.api.guild(player=self.uuid)
 
@@ -98,6 +100,7 @@ class Player:
 
         return profiles
 
+    @property
     def getID(self):
         """
         No wonder what this means .-. (probably hypixel player id)
@@ -105,6 +108,7 @@ class Player:
         """
         return self.data['_id']
 
+    @property
     def getUUID(self):
         """
         Returns the player's uuid (Unique User ID)
@@ -112,6 +116,7 @@ class Player:
         """
         return self.data['uuid']
 
+    @property
     def getDisplayName(self):
         """
         Returns the player's display name
@@ -119,6 +124,7 @@ class Player:
         """
         return self.data['displayname']
 
+    @property
     def getFirstLogin(self):
         """
         Returns the player's first login time
@@ -126,6 +132,7 @@ class Player:
         """
         return self.data['firstLogin']
 
+    @property
     def getKnownAliases(self):
         """
         Returns player's known nicknames
@@ -133,6 +140,7 @@ class Player:
         """
         return self.data['knownAliases']
 
+    @property
     def getKnownAliasesLower(self):
         """
         Returns player's known nicknames (all lowercase)
@@ -140,6 +148,7 @@ class Player:
         """
         return self.data['knownAliasesLower']
 
+    @property
     def getLastLogin(self):
         """
         Returns player's last login time
@@ -149,6 +158,7 @@ class Player:
             return self.data['lastLogin']
         return None
 
+    @property
     def getPlayerName(self):
         """
         Returns player's nickname
@@ -156,6 +166,7 @@ class Player:
         """
         return self.data['playername']
 
+    @property
     def getAchievementsOneTime(self):
         """
         Returns all player's achievements
@@ -163,6 +174,7 @@ class Player:
         """
         return self.data['achievementsOneTime']
 
+    @property
     def getHasAchievement(self, achievement):
         """
         Returns whether player has an achievement or not
@@ -171,6 +183,7 @@ class Player:
         """
         return achievement in self.data['achievementsOneTime']
 
+    @property
     def getLastLogout(self):
         """
         Returns player's last logout time
@@ -180,31 +193,37 @@ class Player:
             return self.data['lastLogout']
         return None
 
+    @property
     def getUserLanguage(self):
         if 'userLanguage' not in self.data:
             return None
         return self.data['userLanguage']
 
+    @property
     def getNetworkExp(self):
         if 'networkExp' not in self.data:
             return None
         return self.data['networkExp']
 
+    @property
     def getNetworkLevel(self):
-        if self.getNetworkExp() is None:
+        if self.getNetworkExp is None:
             return 1
-        return 1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp())
+        return 1 - 3.5 + math.sqrt(12.25 + 0.0008 * self.getNetworkExp)
 
+    @property
     def getKarma(self):
         if 'karma' not in self.data:
             return None
         return self.data['karma']
 
+    @property
     def getMcVersion(self):
         if 'mcVersionRp' not in self.data:
             return None
         return self.data['mcVersionRp']
 
+    @property
     def getHypixelForums(self):
         if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
@@ -212,6 +231,7 @@ class Player:
                     return self.data['socialMedia']['links']['HYPIXEL']
         return None
 
+    @property
     def getInstagram(self):
         if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
@@ -219,6 +239,7 @@ class Player:
                     return self.data['socialMedia']['links']['INSTAGRAM']
         return None
 
+    @property
     def getDiscord(self):
         if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
@@ -226,6 +247,7 @@ class Player:
                     return self.data['socialMedia']['links']['DISCORD']
         return None
 
+    @property
     def getTwitter(self):
         if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
@@ -233,6 +255,7 @@ class Player:
                     return self.data['socialMedia']['links']['TWITTER']
         return None
 
+    @property
     def getYoutube(self):
         if 'socialMedia' in self.data:
             if 'links' in self.data['socialMedia']:
@@ -240,6 +263,7 @@ class Player:
                     return self.data['socialMedia']['links']['YOUTUBE']
         return None
 
+    @property
     def getRank(self):
         rank = "DEFAULT"
         if 'newPackageRank' in self.data:
@@ -254,46 +278,58 @@ class Player:
                 rank = "VIP+"
         return rank
 
+    @property
     def getRankColor(self):
         if 'rankPlusColor' not in self.data:
             return None
         return self.data['rankPlusColor']
 
+    @property
     def getMonthlyRankColor(self):
         if 'monthlyPlusColor' not in self.data:
             return None
         return self.data['monthlyPlusColor']
 
+    @property
     def getMonthlyPackageRank(self):
         if 'monthlyPackageRank' not in self.data:
             return None
         return self.data['monthlyPackageRank']
 
+    @property
     def getMostRecentMonthlyPackageRank(self):
         if 'mostRecentMonthlyPackageRank' not in self.data:
             return None
         return self.data['mostRecentMonthlyPackageRank']
 
+    @property
     def getSkyWars(self):
         return self.skywars
 
+    @property
     def getBedWars(self):
         return self.bedwars
 
+    @property
     def getMurderMystery(self):
         return self.murdermystery
 
+    @property
     def getBuildBattle(self):
         return self.buildbattle
 
+    @property
     def getSkyBlock(self):
         return self.skyblock
 
+    @property
     def getDuels(self):
         return self.duels
 
+    @property
     def getTntGames(self):
         return self.tntgames
 
+    @property
     def getUhc(self):
         return self.uhc
