@@ -10,8 +10,9 @@ class API:
         self.apikey = apikey
         if not checkKeyValidity(self):
             raise APIException("Invalid API key")
+        self.skyblock = self.getSkyBlock()
 
-    def player(self, name=None, uuid=None):
+    def getPlayer(self, name=None, uuid=None):
         """
         Gets player object
         :param name: name of the player (use one of these)
@@ -20,8 +21,8 @@ class API:
         """
         return Player(self, getPlayerData(self, name=name, uuid=uuid))
 
-    def guild(self, name=None, player=None, id=None, members=False):
+    def getGuild(self, name=None, player=None, id=None, members=False):
         return Guild(self, getGuildData(self, name=name, player=player, id=id), members=members)
 
-    def skyblock(self):
+    def getSkyBlock(self):
         return SkyBlock(self)
