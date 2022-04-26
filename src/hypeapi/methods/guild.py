@@ -1,5 +1,6 @@
 from .guildmember import *
 
+
 class Guild:
     def __init__(self, api, data, members=False):
         self.api = api

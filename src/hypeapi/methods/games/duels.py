@@ -19,7 +19,6 @@ class Duels:
         self.kd = self.getKd()
         self.bowShots = self.getBowShots()
 
-
     def getWins(self):
         if 'wins' not in self.dueldata:
             return None
@@ -29,7 +28,6 @@ class Duels:
         if 'kills' not in self.dueldata:
             return None
         return self.dueldata['kills']
-
 
     def getLosses(self):
         if 'losses' not in self.dueldata:
@@ -50,7 +48,6 @@ class Duels:
         if 'bowHits' not in self.dueldata:
             return None
         return self.dueldata['bowHits']
-
 
     def getWlr(self):
         if 'wins' and 'losses' not in self.dueldata:

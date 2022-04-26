@@ -37,4 +37,3 @@ class UHC:
         if 'kills' and 'deaths' not in self.uhcdata:
             return None
         return self.uhcdata['kills'] / self.uhcdata['deaths']
-

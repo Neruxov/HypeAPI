@@ -35,7 +35,6 @@ class TNTGames:
             return None
         return self.tntdata['record_tntrun']
 
-
     def getTntTagKills(self):
         if 'kills_tnttag' not in self.tntdata:
             return None

@@ -1,5 +1,6 @@
 from ...util.api_requests import *
 
+
 class SkyBlock:
     def __init__(self, api):
         self.api = api

@@ -1,7 +1,6 @@
-import requests
-
 from .uuid import *
 from ..errorhandler import *
+
 
 def jsonToString(payload):
     string = ""
@@ -9,31 +8,35 @@ def jsonToString(payload):
         string += f"{i}={payload[i]}&"
     return string[:-1]
 
+
 def checkKeyValidity(api):
     payload = ({
         'key': api.apikey
     })
 
     if api.debug:
-        api.logger.log(f"Sending a request to /key with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /key with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/key?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /key: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /key: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /key: {data}", file=__name__)
+            api.logger.log(f"Received a response from /key: {data}", __name__)
 
     if data['success'] == False:
         if api.debug:
-            api.logger.log(f"Received an error from /key: {data['cause']}", file=__name__)
+            api.logger.log(f"Received an error from /key: {data['cause']}", __name__)
         return False
 
     if api.debug:
-        api.logger.log(f"Loaded a valid api key: Owner: {UUIDToName(data['record']['owner'])}, Limit: {data['record']['limit']}, Total Requests: {data['record']['totalQueries']}", file=__name__)
+        api.logger.log(
+            f"Loaded a valid api key: Owner: {UUIDToName(data['record']['owner'])}, Limit: {data['record']['limit']}, Total Requests: {data['record']['totalQueries']}",
+            __name__)
 
     return True
+
 
 def getPlayerData(api, name=None, uuid=None):
     if name:
@@ -47,15 +50,15 @@ def getPlayerData(api, name=None, uuid=None):
     })
 
     if api.debug:
-        api.logger.log(f"Sending a request to /player with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /player with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/player?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /player: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /player: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /player: {data}", file=__name__)
+            api.logger.log(f"Received a response from /player: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -63,9 +66,10 @@ def getPlayerData(api, name=None, uuid=None):
         raise APIException('Non-existent player')
 
     if api.debug:
-        api.logger.log(f"Successfully loaded player data for {uuid}", file=__name__)
+        api.logger.log(f"Successfully loaded player data for {uuid}", __name__)
 
     return data
+
 
 def getGuildData(api, name=None, player=None, id=None):
     if player:
@@ -87,15 +91,15 @@ def getGuildData(api, name=None, player=None, id=None):
         raise NoArgumentsException
 
     if api.debug:
-        api.logger.log(f"Sending a request to /guild with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /guild with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/guild?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /guild: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /guild: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /guild: {data}", file=__name__)
+            api.logger.log(f"Received a response from /guild: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -103,9 +107,10 @@ def getGuildData(api, name=None, player=None, id=None):
         raise APIException('Non-existent guild')
 
     if api.debug:
-        api.logger.log(f"Successfully loaded guild data ({id}, {player}, {name})", file=__name__)
+        api.logger.log(f"Successfully loaded guild data ({id}, {player}, {name})", __name__)
 
     return data
+
 
 def getSkyBlockProfiles(api, uuid=None):
     payload = ({
@@ -114,15 +119,15 @@ def getSkyBlockProfiles(api, uuid=None):
     })
 
     if api.debug:
-        api.logger.log(f"Sending a request to /skyblock/profile with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /skyblock/profile with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/skyblock/profiles?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /skyblock/profile: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/profile: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /skyblock/profile: {data}", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/profile: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -130,9 +135,10 @@ def getSkyBlockProfiles(api, uuid=None):
         return None
 
     if api.debug:
-        api.logger.log(f"Successfully loaded skyblock profiles for {uuid}", file=__name__)
+        api.logger.log(f"Successfully loaded skyblock profiles for {uuid}", __name__)
 
     return data
+
 
 def getSkyBlockAuctions(api, page=0):
     payload = ({
@@ -140,15 +146,15 @@ def getSkyBlockAuctions(api, page=0):
     })
 
     if api.debug:
-        api.logger.log(f"Sending a request to /skyblock/auctions with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /skyblock/auctions with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/skyblock/auctions?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /skyblock/auctions: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/auctions: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /skyblock/auctions: {data}", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/auctions: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -156,9 +162,10 @@ def getSkyBlockAuctions(api, page=0):
         return None
 
     if api.debug:
-        api.logger.log(f"Successfully loaded skyblock auctions page {page}", file=__name__)
+        api.logger.log(f"Successfully loaded skyblock auctions page {page}", __name__)
 
     return data
+
 
 def getSkyBlockAuction(api, auction_uuid=None, player=None, profile=None):
     if auction_uuid:
@@ -180,15 +187,15 @@ def getSkyBlockAuction(api, auction_uuid=None, player=None, profile=None):
         raise NoArgumentsException
 
     if api.debug:
-        api.logger.log(f"Sending a request to /skyblock/auction with payload: {jsonToString(payload)}", file=__name__)
+        api.logger.log(f"Sending a request to /skyblock/auction with payload: {jsonToString(payload)}", __name__)
 
     data = requests.get(f"https://api.hypixel.net/skyblock/auction?{jsonToString(payload)}").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /skyblock/auction: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/auction: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /skyblock/auction: {data}", file=__name__)
+            api.logger.log(f"Received a response from /skyblock/auction: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -197,17 +204,18 @@ def getSkyBlockAuction(api, auction_uuid=None, player=None, profile=None):
 
     return data
 
+
 def getSkyBlockItems(api):
     if api.debug:
-        api.logger.log(f"Sending a request to /resources/skyblock/items with payload: None", file=__name__)
+        api.logger.log(f"Sending a request to /resources/skyblock/items with payload: None", __name__)
 
     data = requests.get(f"https://api.hypixel.net/resources/skyblock/items").json()
 
     if api.debug:
         if len(str(data)) > 250:
-            api.logger.log(f"Received a response from /resources/skyblock/items: Data too long", file=__name__)
+            api.logger.log(f"Received a response from /resources/skyblock/items: Data too long", __name__)
         else:
-            api.logger.log(f"Received a response from /resources/skyblock/items: {data}", file=__name__)
+            api.logger.log(f"Received a response from /resources/skyblock/items: {data}", __name__)
 
     if data['success'] == False:
         raise APIException(data['cause'])
@@ -215,6 +223,6 @@ def getSkyBlockItems(api):
         return None
 
     if api.debug:
-        api.logger.log(f"Successfully loaded skyblock items", file=__name__)
+        api.logger.log(f"Successfully loaded skyblock items", __name__)
 
     return data

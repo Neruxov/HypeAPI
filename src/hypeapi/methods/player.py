@@ -1,14 +1,15 @@
 import math
 
-from .games.skywars import *
-from .games.bedwars import *
-from .games.murdermystery import *
-from .games.buildbuttle import *
-from .games.skyblock_player import *
-from .games.duels import *
-from .games.tntgames import *
 from .games.UHC import *
+from .games.bedwars import *
+from .games.buildbuttle import *
+from .games.duels import *
+from .games.murdermystery import *
+from .games.skyblock_player import *
+from .games.skywars import *
+from .games.tntgames import *
 from ..util.api_requests import *
+
 
 class Player:
     def __init__(self, api, data):

@@ -1,5 +1,6 @@
 from .player import *
-from..util.api_requests import *
+from ..util.api_requests import *
+
 
 class GuildMember(Player):
     def __init__(self, api, data):

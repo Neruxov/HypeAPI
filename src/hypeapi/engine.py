@@ -1,6 +1,7 @@
+from .methods.games.skyblock import *
 from .methods.guild import *
 from .util.logger import *
-from .methods.games.skyblock import *
+
 
 class API:
     def __init__(self, apikey, debug=False):
@@ -24,4 +25,3 @@ class API:
 
     def skyblock(self):
         return SkyBlock(self)
-
