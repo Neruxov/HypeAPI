@@ -32,12 +32,6 @@ class Duels:
         return self.dueldata['kills']
 
     @property
-    def getLosses(self):
-        if 'losses' not in self.dueldata:
-            return None
-        return self.dueldata['losses']
-
-    @property
     def getCoins(self):
         if 'coins' not in self.dueldata:
             return None

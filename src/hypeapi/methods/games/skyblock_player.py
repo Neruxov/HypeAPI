@@ -10,10 +10,10 @@ class SkyBlockPlayer:
     def getProfiles(self):
         player_profiles = getSkyBlockProfiles(self.player.api, uuid=self.player.uuid)
 
-        if player_profiles == None:
+        if player_profiles is None:
             return None
 
-        if not 'profiles' in player_profiles:
+        if 'profiles' not in player_profiles:
             return None
 
         player_profiles = player_profiles['profiles']

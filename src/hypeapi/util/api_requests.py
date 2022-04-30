@@ -25,14 +25,15 @@ def checkKeyValidity(api):
         else:
             api.logger.log(f"Received a response from /key: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         if api.debug:
             api.logger.log(f"Received an error from /key: {data['cause']}", __name__)
         return False
 
     if api.debug:
         api.logger.log(
-            f"Loaded a valid api key: Owner: {UUIDToName(data['record']['owner'])}, Limit: {data['record']['limit']}, Total Requests: {data['record']['totalQueries']}",
+            f"Loaded a valid api key: Owner: {UUIDToName(data['record']['owner'])}, Limit: {data['record']['limit']}, "
+            f"Total Requests: {data['record']['totalQueries']}",
             __name__)
 
     return True
@@ -60,9 +61,9 @@ def getPlayerData(api, name=None, uuid=None):
         else:
             api.logger.log(f"Received a response from /player: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'player' in data or data['player'] == None:
+    elif 'player' not in data or data['player'] is None:
         raise APIException('Non-existent player')
 
     if api.debug:
@@ -101,9 +102,9 @@ def getGuildData(api, name=None, player=None, id=None):
         else:
             api.logger.log(f"Received a response from /guild: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'guild' in data or data['guild'] == None:
+    elif 'guild' not in data or data['guild'] is None:
         raise APIException('Non-existent guild')
 
     if api.debug:
@@ -129,9 +130,9 @@ def getSkyBlockProfiles(api, uuid=None):
         else:
             api.logger.log(f"Received a response from /skyblock/profile: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'profiles' in data or data['profiles'] == None:
+    elif 'profiles' not in data or data['profiles'] is None:
         return None
 
     if api.debug:
@@ -156,9 +157,9 @@ def getSkyBlockAuctions(api, page=0):
         else:
             api.logger.log(f"Received a response from /skyblock/auctions: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'auctions' in data or data['auctions'] == None:
+    elif 'auctions' not in data or data['auctions'] is None:
         return None
 
     if api.debug:
@@ -197,9 +198,9 @@ def getSkyBlockAuction(api, auction_uuid=None, player=None, profile=None):
         else:
             api.logger.log(f"Received a response from /skyblock/auction: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'auctions' in data or data['auctions'] == None:
+    elif 'auctions' not in data or data['auctions'] is None:
         return None
 
     return data
@@ -217,9 +218,9 @@ def getSkyBlockItems(api):
         else:
             api.logger.log(f"Received a response from /resources/skyblock/items: {data}", __name__)
 
-    if data['success'] == False:
+    if not data['success']:
         raise APIException(data['cause'])
-    elif not 'items' in data or data['items'] == None:
+    elif 'items' not in data or data['items'] is None:
         return None
 
     if api.debug:

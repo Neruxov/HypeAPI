@@ -174,7 +174,6 @@ class Player:
         """
         return self.data['achievementsOneTime']
 
-    @property
     def getHasAchievement(self, achievement):
         """
         Returns whether player has an achievement or not
