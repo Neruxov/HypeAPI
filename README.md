@@ -34,14 +34,14 @@ pip3 install hypeapi
 from hypeapi import API
 api = API('your_api_key')
 # Do the things you want.
-# You can see the examples at EXAMPLES_PATH
+# You can see the examples at https://github.com/Neruxov/HypeAPI/tree/master/examples
 ```
 
 # FAQ
 <hr>
 
 ## Are the any examples?
-Yessir! You can look at the examples at EXAMPLES_PATH.
+Yessir! You can look at the examples at <a href="https://github.com/Neruxov/HypeAPI/tree/master/examples">Examples</a>.
 
 ## Got any issues?
 Please tell us about them at <a href="https://github.com/Neruxov/HypeAPI/issues">Issues</a>!

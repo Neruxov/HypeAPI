@@ -1,11 +1,11 @@
 Metadata-Version: 2.1
 Name: hypeapi
-Version: 0.0.2.4
+Version: 0.1.0
 Summary: UNKNOWN
 Home-page: https://github.com/Neruxov/HypeAPI
 Author: Neruxov
 Author-email: k.neruxov@gmail.com
-License: .-.
+License: MIT
 Keywords: hypixel hypixel_api hypixel_api_python
 Platform: UNKNOWN
 Requires-Python: >=3.7

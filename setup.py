@@ -2,8 +2,8 @@ from setuptools import setup, find_packages
 
 setup(
     name='hypeapi',
-    version='0.0.2.4',
-    license='.-.',
+    version='0.1.0',
+    license='MIT',
     author='Neruxov',
     author_email='k.neruxov@gmail.com',
     packages=find_packages('src'),
