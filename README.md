@@ -1,4 +1,4 @@
-<img style="align-items: center" src="https://media.discordapp.net/attachments/852666380541231114/970031574248734730/ashjkl_djklh_asdjiop.png?width=787&height=466" alt="HypeAPI Logo">
+<img style="align-items: center" src="https://media.discordapp.net/attachments/852666380541231114/970228441561563176/reworked_hypeapi.png?width=787&height=466" alt="HypeAPI Logo">
 
 <p align="center">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Neruxov/HypeAPI">
@@ -29,7 +29,6 @@ pip3 install hypeapi
 ```
 
 # FAQ
-<hr>
 
 ## How to use HypeAPI?
 Here an example:
