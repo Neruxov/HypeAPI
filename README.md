@@ -2,8 +2,7 @@
 
 <p align="center">
     <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/Neruxov/HypeAPI">
-    <img alt="GitHub latest release" src="https://img.shields.io/github/downloads/Neruxov/HypeAPI/latest/total">
-    <img alt="GitHub all releases" src="https://img.shields.io/github/downloads/Neruxov/HypeAPI/total">
+    <img alt="Made by" src="https://img.shields.io/badge/made%20with%20%E2%9D%A4%20by%20-Neruxov%20%26%20TheQuiu-red">
     <img alt="GitHub release (latest by date including pre-releases)" src="https://img.shields.io/github/v/release/Neruxov/HypeAPI?display_name=tag&include_prereleases">
 </p>
 
@@ -29,21 +28,20 @@ python -m pip install -U hypeapi
 pip3 install hypeapi
 ```
 
-### How to use HypeAPI?
+# FAQ
+<hr>
+
+## How to use HypeAPI?
+Here an example:
 ```python
 from hypeapi import API
 api = API('your_api_key')
 # Do the things you want.
-# You can see the examples at https://github.com/Neruxov/HypeAPI/tree/master/examples
+# You can see more examples at https://github.com/Neruxov/HypeAPI/tree/master/examples
 ```
-
-# FAQ
-<hr>
 
 ## Are the any examples?
 Yessir! You can look at the examples at <a href="https://github.com/Neruxov/HypeAPI/tree/master/examples">Examples</a>.
 
-## Got any issues?
+## Got any issues or have any suggestions?
 Please tell us about them at <a href="https://github.com/Neruxov/HypeAPI/issues">Issues</a>!
-
-

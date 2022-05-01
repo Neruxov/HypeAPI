@@ -6,6 +6,8 @@ setup(
     license='MIT',
     author='Neruxov',
     author_email='k.neruxov@gmail.com',
+    long_description=open('README.md').read(),
+    long_description_content_type="text/markdown",
     packages=find_packages('src'),
     package_dir={'': 'src'},
     url='https://github.com/Neruxov/HypeAPI',
